@@ -17,7 +17,7 @@ const TodoForm = ({ inputText, setInputText, todos, setTodos }) => {
     <form className="flex justify-center content-center my-5">
       <div className="flex items-center border-b border-teal-500 py-2">
         <input
-          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none transition duration-200"
           type="text"
           placeholder="Add Todo"
           onChange={(e) => setInputText(e.target.value)}

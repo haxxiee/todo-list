@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Todo from "./components/Todo";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
@@ -18,9 +17,7 @@ const App = () => {
         todos={todos}
         setTodos={setTodos}
       />
-
-      {/* <Todo /> */}
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 };
