@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
 
 const Todo = ({ todo, setTodos, todos }) => {
   const deleteHandler = () => {
@@ -31,7 +31,7 @@ const Todo = ({ todo, setTodos, todos }) => {
       </div>
 
       <button onClick={deleteHandler}>
-        <FaTrashAlt className="mr-4 " />
+        <FiX className="mr-4 text-xl" />
       </button>
     </div>
   );

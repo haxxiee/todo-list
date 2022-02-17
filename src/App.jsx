@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="flex justify-center content-center mt-10 text-3xl font-bold">
+      <h1 className="flex justify-center content-center mt-10 text-3xl font-bold text-slate-800">
         My Todo List
       </h1>
       <TodoForm
