@@ -1,15 +1,16 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
-const TodoForm = ({ inputText, setInputText, todos, setTodos }) => {
+const TodoForm = ({ inputText, setInputText }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputText === "") return;
 
-    const newTodo = { id: uuidv4(), text: inputText, complete: false };
-
-    setTodos([newTodo, ...todos]);
+    const json = JSON.stringify({ todo: inputText });
+    axios.post("http://localhost:5001/todos", json).then((res) => {
+      console.log(res);
+    });
     setInputText("");
   };
 

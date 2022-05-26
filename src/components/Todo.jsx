@@ -1,19 +1,23 @@
+import axios from "axios";
 import React from "react";
 import { FiX } from "react-icons/fi";
 
-const Todo = ({ todo, setTodos, todos }) => {
+const Todo = ({ todo }) => {
   const deleteHandler = () => {
-    setTodos(todos.filter((el) => el.id !== todo.id));
+    axios
+      .delete(`http://localhost:5001/todos/${todo.id}`)
+      .then((res) => console.log(res).catch((err) => console.log(err)));
   };
 
-  const completeHandler = () => {
-    setTodos(
-      todos.map((obj) =>
-        obj.id === todo.id
-          ? { id: obj.id, text: obj.text, complete: !obj.complete }
-          : obj
-      )
+  const completeHandler = async () => {
+    const json = JSON.stringify({ completed: !todo.id });
+
+    const res = await axios.patch(
+      `http://localhost:5001/todos/${todo.id}`,
+      json
     );
+
+    console.log(res);
   };
 
   return (
@@ -23,10 +27,12 @@ const Todo = ({ todo, setTodos, todos }) => {
           className="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-teal-500 focus:outline-none transition duration-200 my-1 mx-3 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
           type="checkbox"
           value=""
+          checked={todo.completed}
           onClick={completeHandler}
+          readOnly
         />
-        <p className={`${todo.complete ? "line-through text-slate-600" : ""}`}>
-          {todo.text}
+        <p className={`${todo.completed ? "line-through text-slate-600" : ""}`}>
+          {todo.todo}
         </p>
       </div>
 
